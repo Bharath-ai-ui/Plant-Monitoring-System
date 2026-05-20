@@ -1,0 +1,175 @@
+/* ── Soil Moisture ────────────────────────────────────────────── */
+.soil-moisture {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-base);
+}
+
+.soil-moisture__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.soil-moisture__title {
+  font-size: var(--font-md);
+  font-weight: 600;
+}
+
+.soil-moisture__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: 600;
+}
+
+.soil-moisture__badge--dry {
+  background: hsla(35, 85%, 55%, 0.12);
+  color: hsl(35, 85%, 60%);
+}
+
+.soil-moisture__badge--optimal {
+  background: hsla(152, 68%, 45%, 0.12);
+  color: hsl(152, 68%, 60%);
+}
+
+.soil-moisture__badge--wet {
+  background: hsla(210, 70%, 55%, 0.12);
+  color: hsl(210, 70%, 65%);
+}
+
+.soil-moisture__badge--unknown {
+  background: var(--color-surface-2);
+  color: var(--color-text-dim);
+}
+
+/* ── Circular Gauge ──────────────────────────────────────────── */
+.soil-moisture__gauge {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-sm) 0;
+}
+
+.soil-moisture__circle {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.soil-moisture__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.soil-moisture__arc {
+  transition: stroke-dasharray 0.8s var(--ease-out);
+}
+
+.soil-moisture__arc--dry {
+  stroke: hsl(35, 85%, 55%);
+  filter: drop-shadow(0 0 6px hsla(35, 85%, 55%, 0.4));
+}
+
+.soil-moisture__arc--optimal {
+  stroke: hsl(152, 68%, 45%);
+  filter: drop-shadow(0 0 6px hsla(152, 68%, 45%, 0.4));
+}
+
+.soil-moisture__arc--wet {
+  stroke: hsl(210, 70%, 55%);
+  filter: drop-shadow(0 0 6px hsla(210, 70%, 55%, 0.4));
+}
+
+.soil-moisture__arc--unknown {
+  stroke: var(--color-text-dim);
+}
+
+.soil-moisture__value-group {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.soil-moisture__value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.soil-moisture__unit {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* ── Bar ─────────────────────────────────────────────────────── */
+.soil-moisture__bar-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.soil-moisture__bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.soil-moisture__bar {
+  position: relative;
+  height: 6px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-full);
+  overflow: visible;
+}
+
+.soil-moisture__bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.8s var(--ease-out);
+}
+
+.soil-moisture__bar-fill--dry {
+  background: linear-gradient(90deg, hsl(45, 90%, 55%), hsl(35, 85%, 55%));
+}
+
+.soil-moisture__bar-fill--optimal {
+  background: linear-gradient(90deg, hsl(152, 68%, 45%), hsl(172, 60%, 40%));
+}
+
+.soil-moisture__bar-fill--wet {
+  background: linear-gradient(90deg, hsl(200, 65%, 50%), hsl(210, 70%, 55%));
+}
+
+.soil-moisture__bar-fill--unknown {
+  background: var(--color-text-dim);
+}
+
+.soil-moisture__zone-marker {
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 12px;
+  background: var(--color-border);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.soil-moisture__footer {
+  text-align: center;
+}
+
+.soil-moisture__update-text {
+  font-size: var(--font-xs);
+  color: var(--color-text-dim);
+}

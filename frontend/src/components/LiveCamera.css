@@ -1,0 +1,208 @@
+/* ── Live Camera ──────────────────────────────────────────────── */
+.live-camera {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-base);
+}
+
+.live-camera__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.live-camera__title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.live-camera__title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.live-camera__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.live-camera__badge--live {
+  background: hsla(0, 85%, 55%, 0.15);
+  color: hsl(0, 85%, 65%);
+}
+
+.live-camera__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.live-camera__badge--off {
+  background: hsla(220, 10%, 45%, 0.15);
+  color: var(--color-text-dim);
+}
+
+.live-camera__badge--off .live-camera__badge-dot {
+  animation: none;
+}
+
+.live-camera__source {
+  font-size: var(--font-xs);
+  color: var(--color-text-dim);
+}
+
+/* ── Viewport ───────────────────────────────────────────────── */
+.live-camera__viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: hsl(220, 25%, 6%);
+  border: 1px solid var(--color-border);
+}
+
+.live-camera__stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Scan overlay ───────────────────────────────────────────── */
+.live-camera__scan-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 2px solid hsla(152, 68%, 45%, 0.3);
+  border-radius: var(--radius-md);
+}
+
+.live-camera__scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-primary) 20%,
+    var(--color-primary) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px var(--color-primary), 0 0 40px var(--color-primary-glow);
+  animation: scanDown 2.5s ease-in-out infinite;
+}
+
+@keyframes scanDown {
+  0%   { top: 0%; }
+  50%  { top: 100%; }
+  100% { top: 0%; }
+}
+
+/* ── Error ──────────────────────────────────────────────────── */
+.live-camera__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--space-md);
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.live-camera__error-icon {
+  font-size: 2.5rem;
+  opacity: 0.6;
+}
+
+.live-camera__error-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.live-camera__error-msg {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+  max-width: 300px;
+}
+
+.live-camera__retry-btn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary-text);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.live-camera__retry-btn:hover {
+  background: var(--color-primary-glow);
+  border-color: var(--color-primary-dim);
+}
+
+/* ── Controls ───────────────────────────────────────────────── */
+.live-camera__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-base);
+}
+
+.live-camera__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-base);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.live-camera__btn--start {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: hsl(220, 22%, 8%);
+  box-shadow: 0 2px 12px hsla(152, 68%, 45%, 0.3);
+}
+
+.live-camera__btn--start:hover {
+  box-shadow: 0 4px 20px hsla(152, 68%, 45%, 0.45);
+  transform: translateY(-1px);
+}
+
+.live-camera__btn--stop {
+  background: linear-gradient(135deg, var(--color-danger), hsl(15, 70%, 50%));
+  color: white;
+  box-shadow: 0 2px 12px hsla(0, 72%, 55%, 0.3);
+}
+
+.live-camera__btn--stop:hover {
+  box-shadow: 0 4px 20px hsla(0, 72%, 55%, 0.45);
+  transform: translateY(-1px);
+}
+
+.live-camera__btn-icon {
+  font-size: 0.8rem;
+}
+
+.live-camera__controls-hint {
+  font-size: var(--font-sm);
+  color: var(--color-text-dim);
+}

@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════════════════
+   App Layout
+   ═══════════════════════════════════════════════════════════════ */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Dashboard ──────────────────────────────────────────────── */
+.dashboard {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: var(--space-xl) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 1400px;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.dashboard__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-base);
+  flex-wrap: wrap;
+}
+
+.dashboard__heading {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--color-text), var(--color-primary-text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dashboard__subheading {
+  font-size: var(--font-base);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+.dashboard__error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-base);
+  border-radius: var(--radius-md);
+  background: hsla(0, 72%, 55%, 0.1);
+  border: 1px solid hsla(0, 72%, 55%, 0.25);
+  color: hsl(0, 72%, 65%);
+  font-size: var(--font-sm);
+  animation: fadeIn 0.3s var(--ease-out);
+}
+
+/* ── Grid ───────────────────────────────────────────────────── */
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-xl);
+  animation: fadeIn 0.6s var(--ease-out) 0.1s both;
+}
+
+.dashboard__col-left,
+.dashboard__col-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    margin-left: 0;
+    padding: var(--space-base);
+  }
+}
